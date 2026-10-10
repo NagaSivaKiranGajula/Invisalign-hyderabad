@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+out/
+tsconfig.tsbuildinfo
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# lead form backup log (contains personal data)
+public/leads.csv
+
+# research scratch — stock candidates and contact sheets, not part of the site
+stock-candidates/
+
+# editor / OS
+.DS_Store
+*.log

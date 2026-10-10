@@ -1,0 +1,27 @@
+{
+  "name": "invisalign-center-hyderabad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Invisalign Center in Hyderabad - SEO/PPC landing site for Dr. Praveen Kurapati",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "build:static": "STATIC_EXPORT=true next build",
+    "lint": "next lint"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "dependencies": {
+    "next": "^15.5.27",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.2"
+  }
+}

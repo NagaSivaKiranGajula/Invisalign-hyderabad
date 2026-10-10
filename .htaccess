@@ -1,0 +1,56 @@
+# ---------------------------------------------------------------------------
+# Invisalign Center Hyderabad — Apache config for GoDaddy cPanel
+#
+# REPLACE the two placeholders below (USERNAME) with your cPanel username:
+#   /home/USERNAME/invisalign-center            <- folder this file sits in
+#   /home/USERNAME/nodevenv/invisalign-center/20/bin/node   <- Node 20 path
+#
+# If GoDaddy's "Setup Node.js App" already wrote a passenger block, keep theirs
+# and only merge the sections marked "SEO" below.
+# ---------------------------------------------------------------------------
+
+PassengerAppRoot /home/USERNAME/invisalign-center
+PassengerBaseURI /
+PassengerAppType node
+PassengerStartupFile app.js
+PassengerNodejs /home/USERNAME/nodevenv/invisalign-center/20/bin/node
+PassengerRestartDir /home/USERNAME/invisalign-center/tmp
+
+DirectoryIndex disabled
+
+# ------------------------------- SEO ---------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# --- Force HTTPS + non-www canonical host --------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://invisalignhyderabadcenter.com/$1 [R=301,L]
+  RewriteCond %{HTTP_HOST} ^www\.invisalignhyderabadcenter\.com$ [NC]
+  RewriteRule ^(.*)$ https://invisalignhyderabadcenter.com/$1 [R=301,L]
+</IfModule>
+
+# --- Long cache for static assets; never cache HTML or PHP -----------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<FilesMatch "\.(php|html)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-store, must-revalidate"
+  </IfModule>
+</FilesMatch>
+
+# --- Gzip ------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+</IfModule>

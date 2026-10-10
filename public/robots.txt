@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /send.php
+Disallow: /leads.csv
+
+# Block nothing else — this site is built for organic search visibility.
+
+Sitemap: https://invisalignhyderabadcenter.com/sitemap.xml
+Host: https://invisalignhyderabadcenter.com
